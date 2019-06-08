@@ -1,0 +1,2 @@
+agency_id,agency_name,agency_url,agency_timezone,agency_phone,agency_lang
+Loctrans,Loctrans,http://loctrans-slatina.ro/,Romania/Slatina,0249 436 550,ro
