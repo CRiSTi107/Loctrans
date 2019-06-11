@@ -17,6 +17,7 @@ def is_time_equal_to(currentDatetime, hour, minutes):
 
 # LX_dt[0] - time that the bus takes from station 0 to 1
 
+l2_stops = ["GARA", "ARTILERIEI", "CAO", "STEAUA", "METALURGIC", "VALCEA", "LPS", "HELIOS", "PARC HOTEL", "CATEDRALA", "CATEDRALA", "SPITAL", "ACR", "ROMTELECOM", "VALCEA", "METALURGIC", "STEAUA", "KAUFLAND", "GARA"]
 l3_stops = ["LPS", "OMV", "AXXA", "EROILOR", "EROILOR", "DECORA", "TMUCB", "GARA", "TUNARI", "FABRA", "LPS"]
 
 def generate_L3_LV():
@@ -76,12 +77,24 @@ def generate_L3_SD():
 
     file.close()
 
+def generate_L2_LV():
+    l2_dt = [1, 2, 1, 1, 2, 2, 2, 2, 3, 9, 3, 1, 1, 2, 1, 1, 2, 2]
+
+    current_time = datetime(2008, 1, 1, 5, 30)
+    file = open("L2_LV.out.csv", "w")
+
+    for stop in l2_stops:
+        file.write("{};".format(stop))
+    file.write("\n")
 
 def main():
     print("Generating scripts...\n");
 
+    generate_L2_LV()
+
     generate_L3_LV()
     generate_L3_SD()
+
 
     print("Scripts have been successfully generated!");
 
