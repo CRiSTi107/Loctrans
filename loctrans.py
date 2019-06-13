@@ -26,7 +26,7 @@ def is_time_later_than(current_datetime, hour, minutes):
 # LX_dt[0] - time that the bus takes from station 0 to 1
 
 l1_stops = ["ACH", "CATEDRALA", "SPITAL", "ACR", "ROMTELECOM", "UNION", "MINULESCU", "ARCULUI", "FINANTE", "VALCEA", "METALURGIC", "STEAUA", "STEAUA", "METALURGIC", "FABRA", "LPS", "HELIOS", "PARC HOTEL", "CATEDRALA", "ACH"]
-l1a_stops = []
+l1a_stops = ["ACH", "CATEDRALA", "SPITAL", "ACR", "ROMTELECOM", "VALCEA", "METALURGIC", "STEAUA", "PIRELLI", "TMK", "TMK", "PIRELLI", "STEAUA", "METALURGIC", "FABRA", "LPS", "HELIOS", "PARC HOTEL", "CATEDRALA", "ACH"]
 l1b_stops = []
 l1c_stops = []
 l2_stops = ["GARA", "ARTILERIEI", "CAO", "STEAUA", "METALURGIC", "VALCEA", "LPS", "HELIOS", "PARC HOTEL", "CATEDRALA", "CATEDRALA", "SPITAL", "ACR", "ROMTELECOM", "VALCEA", "METALURGIC", "STEAUA", "KAUFLAND", "GARA"]
@@ -108,6 +108,35 @@ def generate_L1_SD():
             current_time -= timedelta(minutes=30)
 
         current_time += timedelta(minutes=41)
+
+        i += 1
+
+    file.close()
+
+def generate_L1A_LV():
+    l1a_dt = [3, 3, 1, 1, 2, 1, 2, 3, 2, 12, 3, 3, 1, 2, 2, 2, 2, 3, 3, 0]
+
+    current_time = datetime(2008, 1, 1, 6, 0)
+    file = open("L1A_LV.out.csv", "w")
+
+    for stop in l1a_stops:
+        file.write("{};".format(stop))
+    file.write("\n")
+
+    i = 0
+    while i < 3:
+
+        for diff in l1a_dt:
+            file.write("{:02d}:{:02d};".format(current_time.hour, current_time.minute))
+            if(is_time_equal_to(current_time, 7, 38)):
+                break
+            current_time += timedelta(minutes=diff)
+        file.write("\n")
+
+        if (is_time_equal_to(current_time, 7, 38)):
+            current_time += timedelta(minutes=22+60*6-29)
+
+        current_time += timedelta(minutes=29)
 
         i += 1
 
@@ -264,6 +293,8 @@ def main():
 
     generate_L1_LV()
     generate_L1_SD()
+
+    generate_L1A_LV()
 
     generate_L2_LV()
     generate_L2_SD()
