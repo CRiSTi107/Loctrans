@@ -136,10 +136,49 @@ def generate_L2_LV():
 
     file.close()
 
+def generate_L2_SD():
+    l2_dt = [1, 2, 1, 1, 2, 2, 2, 2, 3, 9, 3, 1, 1, 2, 1, 1, 2, 2, 0]
+
+    current_time = datetime(2008, 1, 1, 5, 30)
+    file = open("L2_SD.out.csv", "w")
+
+    for stop in l2_stops:
+        file.write("{};".format(stop))
+    file.write("\n")
+
+    i = 0
+    while i < 16:
+        gap = False
+
+        for diff in l2_dt:
+            file.write("{:02d}:{:02d};".format(current_time.hour, current_time.minute))
+            current_time += timedelta(minutes=diff)
+        file.write("\n")
+
+        if is_time_equal_to(current_time, 6, 8):
+            current_time += timedelta(minutes=62)
+            gap = True
+
+        if is_time_equal_to(current_time, 10, 18):
+            current_time += timedelta(minutes=47)
+            gap = True
+
+        if is_time_equal_to(current_time, 14, 13):
+            current_time += timedelta(minutes=52)
+            gap = True
+
+        if not gap:
+            current_time += timedelta(minutes=12)
+
+        i += 1
+
+    file.close()
+
 def main():
     print("[{}] Generating bus stops...\n".format(strftime("%Y-%m-%d %H:%M:%S", gmtime())))
 
     generate_L2_LV()
+    generate_L2_SD()
 
     generate_L3_LV()
     generate_L3_SD()
