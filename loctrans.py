@@ -2,6 +2,7 @@
 
 from datetime import datetime
 from datetime import timedelta
+from time import gmtime, strftime
 
 lines = ["L1", "L1A", "L1B", "L1C",
          "L2",
@@ -9,8 +10,15 @@ lines = ["L1", "L1A", "L1B", "L1C",
          "L4",
          "L5", "L5B"]
 
-def is_time_equal_to(currentDatetime, hour, minutes):
-    if currentDatetime.hour == hour and currentDatetime.minute == minutes:
+def is_time_equal_to(current_datetime, hour, minutes):
+    time_to_compare = datetime(2008, 1, 1, hour, minutes)
+    if current_datetime.time() == time_to_compare.time():
+        return True
+    return False
+
+def is_time_later_than(current_datetime, hour, minutes):
+    time_to_compare = datetime(2008, 1, 1, hour, minutes)
+    if current_datetime.time() >= time_to_compare.time():
         return True
     return False
 
@@ -45,7 +53,7 @@ def generate_L3_LV():
         for diff in l3_dt:
             file.write("{:02d}:{:02d};".format(current_time.hour, current_time.minute))
             current_time += timedelta(minutes=diff)
-        file.write("\n");
+        file.write("\n")
         i += 1
 
     file.close()
@@ -72,13 +80,13 @@ def generate_L3_SD():
         for diff in l3_dt:
             file.write("{:02d}:{:02d};".format(current_time.hour, current_time.minute))
             current_time += timedelta(minutes=diff)
-        file.write("\n");
+        file.write("\n")
         i += 1
 
     file.close()
 
 def generate_L2_LV():
-    l2_dt = [1, 2, 1, 1, 2, 2, 2, 2, 3, 9, 3, 1, 1, 2, 1, 1, 2, 2]
+    l2_dt = [1, 2, 1, 1, 2, 2, 2, 2, 3, 9, 3, 1, 1, 2, 1, 1, 2, 2, 0]
 
     current_time = datetime(2008, 1, 1, 5, 30)
     file = open("L2_LV.out.csv", "w")
@@ -87,16 +95,56 @@ def generate_L2_LV():
         file.write("{};".format(stop))
     file.write("\n")
 
+    i = 0
+    while i < 29:
+        gap = False
+
+        for diff in l2_dt:
+            file.write("{:02d}:{:02d};".format(current_time.hour, current_time.minute))
+            if is_time_equal_to(current_time, 13, 51):
+                break
+            current_time += timedelta(minutes=diff)
+        file.write("\n")
+
+        if is_time_equal_to(current_time, 15, 28):
+            current_time -= timedelta(minutes=23)
+            gap = True
+
+        if is_time_equal_to(current_time, 14, 53):
+            current_time -= timedelta(minutes=3)
+            gap = True
+
+        if is_time_equal_to(current_time, 14, 38):
+            current_time -= timedelta(minutes=23)
+            gap = True
+
+        if is_time_equal_to(current_time, 13, 51):
+            current_time += timedelta(minutes=9)
+            gap = True
+
+        if is_time_equal_to(current_time, 10, 43):
+            current_time += timedelta(minutes=22)
+            gap = True
+
+        if not gap:
+            if is_time_later_than(current_time, 15, 43):
+                current_time += timedelta(minutes=12)
+            else:
+                current_time -= timedelta(minutes=13)
+
+        i += 1
+
+    file.close()
+
 def main():
-    print("Generating scripts...\n");
+    print("[{}] Generating bus stops...\n".format(strftime("%Y-%m-%d %H:%M:%S", gmtime())))
 
     generate_L2_LV()
 
     generate_L3_LV()
     generate_L3_SD()
 
-
-    print("Scripts have been successfully generated!");
+    print("[{}] Bus stops have been successfully generated!\n".format(strftime("%Y-%m-%d %H:%M:%S", gmtime())))
 
 if __name__ == "__main__":
     main()
