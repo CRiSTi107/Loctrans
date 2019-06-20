@@ -27,7 +27,7 @@ def is_time_later_than(current_datetime, hour, minutes):
 
 l1_stops = ["ACH", "CATEDRALA", "SPITAL", "ACR", "ROMTELECOM", "UNION", "MINULESCU", "ARCULUI", "FINANTE", "VALCEA", "METALURGIC", "STEAUA", "STEAUA", "METALURGIC", "FABRA", "LPS", "HELIOS", "PARC HOTEL", "CATEDRALA", "ACH"]
 l1a_stops = ["ACH", "CATEDRALA", "SPITAL", "ACR", "ROMTELECOM", "VALCEA", "METALURGIC", "STEAUA", "PIRELLI", "TMK", "TMK", "PIRELLI", "STEAUA", "METALURGIC", "FABRA", "LPS", "HELIOS", "PARC HOTEL", "CATEDRALA", "ACH"]
-l1b_stops = []
+l1b_stops = ["ACH", "CATEDRALA", "SPITAL", "ACR", "ROMTELECOM", "UNION", "MINULESCU", "ARCULUI", "FINANTE", "VALCEA", "METALURGIC", "TUNARI", "ARTILERIEI", "CAO", "PRYSMIAN1", "PRYSMIAN2", "PRYSMIAN2", "PRYSMIAN1", "LIDL", "GARA", "TUNARI", "METALURGIC", "FABRA", "LPS", "HELIOS", "ACR", "ROMTELECOM", "FINANTE", "13 DECEMBRIE", "CATEDRALA", "ACH"]
 l1c_stops = []
 l2_stops = ["GARA", "ARTILERIEI", "CAO", "STEAUA", "METALURGIC", "VALCEA", "LPS", "HELIOS", "PARC HOTEL", "CATEDRALA", "CATEDRALA", "SPITAL", "ACR", "ROMTELECOM", "VALCEA", "METALURGIC", "STEAUA", "KAUFLAND", "GARA"]
 l3_stops = ["LPS", "OMV", "AXXA", "EROILOR", "EROILOR", "DECORA", "TMUCB", "GARA", "TUNARI", "FABRA", "LPS"]
@@ -161,6 +161,58 @@ def generate_L1A_SD():
                 break
             current_time += timedelta(minutes=diff)
         file.write("\n")
+
+        i += 1
+
+    file.close()
+
+def generate_L1B_LV():
+    l1b_dt = [3, 3, 1, 1, 2, 1, 1, 1, 2, 2, 2, 2, 1, 3, 3, 52, 3, 3, 4, 1, 5, 2, 2, 2, 2, 1, 2, 2, 6, 3, 0]
+
+    current_time = datetime(2008, 1, 1, 6, 0)
+    file = open("L1B_LV.out.csv", "w")
+
+    for stop in l1b_stops:
+        file.write("{};".format(stop))
+    file.write("\n")
+
+    i = 0
+    while i < 3:
+
+        for diff in l1b_dt:
+            file.write("{:02d}:{:02d};".format(current_time.hour, current_time.minute))
+
+            if(is_time_equal_to(current_time, 15, 31)):
+                current_time -= timedelta(minutes=1)
+
+            if(is_time_equal_to(current_time, 15, 48)):
+                current_time -= timedelta(minutes=1)
+
+            if(is_time_equal_to(current_time, 23, 26)):
+                current_time -= timedelta(minutes=2)
+
+            if(is_time_equal_to(current_time, 23, 29)):
+                current_time -= timedelta(minutes=2)
+
+            if(is_time_equal_to(current_time, 23, 44)):
+                current_time -= timedelta(minutes=1)
+
+            current_time += timedelta(minutes=diff)
+
+            if(is_time_equal_to(current_time, 23, 40)):
+                current_time += timedelta(minutes=1)
+
+            if(is_time_equal_to(current_time, 23, 51)):
+                current_time += timedelta(minutes=1)
+        file.write("\n")
+
+        if(is_time_equal_to(current_time, 7, 58)):
+            current_time += timedelta(minutes=6*60)
+
+        if(is_time_equal_to(current_time, 15, 56)):
+            current_time += timedelta(minutes=2+60*6)
+
+        current_time += timedelta(minutes=2)
 
         i += 1
 
@@ -320,6 +372,8 @@ def main():
 
     generate_L1A_LV()
     generate_L1A_SD()
+
+    generate_L1B_LV()
 
     generate_L2_LV()
     generate_L2_SD()
