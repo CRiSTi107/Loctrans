@@ -218,6 +218,43 @@ def generate_L1B_LV():
 
     file.close()
 
+def generate_L1B_SD():
+    l1b_dt = [3, 3, 1, 1, 2, 2, 1, 1, 2, 1, 2, 1, 2, 3, 5, 60, 5, 2, 2, 2, 2, 2, 2, 2, 2, 1, 1, 3, 2, 3, 0]
+
+    current_time = datetime(2008, 1, 1, 5, 50)
+    file = open("L1B_SD.out.csv", "w")
+
+    for stop in l1b_stops:
+        file.write("{};".format(stop))
+    file.write("\n")
+
+    i = 0
+    while i < 3:
+
+        for diff in l1b_dt:
+            file.write("{:02d}:{:02d};".format(current_time.hour, current_time.minute))
+
+            if(is_time_equal_to(current_time, 18, 30)):
+                current_time -= timedelta(minutes=10)
+
+            if(is_time_equal_to(current_time, 22, 30)):
+                current_time -= timedelta(minutes=10)
+
+            current_time += timedelta(minutes=diff)
+        file.write("\n")
+
+        if(is_time_equal_to(current_time, 7, 51)):
+            current_time += timedelta(minutes=60*10)
+
+        if (is_time_equal_to(current_time, 19, 51)):
+            current_time += timedelta(minutes=60*2)
+
+        current_time += timedelta(minutes=9)
+
+        i += 1
+
+    file.close()
+
 def generate_L2_LV():
     l2_dt = [1, 2, 1, 1, 2, 2, 2, 2, 3, 9, 3, 1, 1, 2, 1, 1, 2, 2, 0]
 
@@ -374,6 +411,7 @@ def main():
     generate_L1A_SD()
 
     generate_L1B_LV()
+    generate_L1B_SD()
 
     generate_L2_LV()
     generate_L2_SD()
