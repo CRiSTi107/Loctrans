@@ -1,0 +1,2 @@
+agency_name,agency_url,agency_timezone
+Loctrans Slatina,http://loctrans-slatina.ro,Europe/Bucharest

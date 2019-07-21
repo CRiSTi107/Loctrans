@@ -1,0 +1,19 @@
+route_id,route_short_name,route_long_name,route_type
+1T,L1 Tur,L1 ACH-Steaua,3
+1R,L1 Retur,L1 Steaua-ACH,3
+1AT,L1A Tur,L1A ACH-TMK,3
+1AR,L1A Retur,L1A TMK-ACH,3
+1BT,L1B Tur,L1B ACH-Prysmian,3
+1BR,L1B Retur,L1B Prysmian-ACH,3
+1CT,L1C Tur,L1C ACH-TMK,3
+1CR,L1C Retur,L1C TMK-ACH,3
+2T,L2 Tur,L2 Gara-Catedrala,3
+2R,L2 Retur,L2 Catedrala-Gara,3
+3T,L3 Tur,L3 LPS-Eroilor,3
+3R,L3 Retur,L3 Eroilor-LPS,3
+4T,L4 Tur,L4 Catedrala-Satu Nou,3
+4R,L4 Retur,L4 Satu Nou-Catedrala,3
+5T,L5 Tur,L5 Clocociov-Valcea,3
+5R,L5 Retur,L5 Valcea-Clocociov,3
+5BT,L5B Tur,L5B Clocociov-Alro,3
+5BR,L5B Retur,L5B Alro-Clocociov,3
