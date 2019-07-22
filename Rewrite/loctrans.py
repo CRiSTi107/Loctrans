@@ -55,6 +55,56 @@ def generate_L1_LV_R():
 	start_time = time(5, 35)
 	write_line(dt, tr, stops, start_time, file)
 	file.close()
+	
+def generate_L1_SD_T():
+	dt = [0, 4, 2, 1, 1, 1, 2, 2, 1, 2, 1, 1]
+	tr = [0, 80, 80, 80, 80, 50]
+	stops = ["ACH", "CATEDRALA", "SPITAL", "ACR", "ROMTELECOM", "UNION", "MINULESCU", "ARCULUI", "FINANTE", "VALCEA", "METALURGIC", "STEAUA"]
+	
+	file = open("l1_sd_t.csv", "w")
+	start_time = time(7)
+	write_line(dt, tr, stops, start_time, file)
+	file.close()
+
+def generate_L1_SD_R():
+	dt = [0, 1, 1, 2, 2, 2, 3, 3]
+	tr = [0, 80, 80, 80, 80, 50]
+	stops = ["STEAUA", "METALURGIC", "FABRA", "LPS", "HELIOS", "PARC HOTEL", "CATEDRALA", "ACH"]
+
+	file = open("l1_sd_r.csv", "w")
+	start_time = time(7, 25)
+	write_line(dt, tr, stops, start_time, file)
+	file.close()
+
+def generate_L1A_LV_T():
+	dt = [0, 3, 3, 1, 1, 2, 1, 2, 3, 2]
+	tr = [0, 80, 400]
+	stops = ["ACH", "CATEDRALA", "SPITAL", "ACR", "ROMTELECOM", "VALCEA", "METALURGIC", "STEAUA", "PIRELLI", "TMK"]
+
+	file = open("l1a_lv_t.csv", "w")
+	start_time = time(6)
+	write_line(dt, tr, stops, start_time, file)
+	file.close()
+
+def generate_L1A_LV_R():
+	dt = [0, 3, 3, 1, 2, 2, 2, 2, 3, 3]
+	tr = [0, 530]
+	stops = ["TMK", "PIRELLI", "STEAUA", "METALURGIC", "FABRA", "LPS", "HELIOS", "PARC HOTEL", "CATEDRALA", "ACH"]
+
+	file = open("l1a_lv_r.csv", "w")
+	start_time = time(6, 30)
+	write_line(dt, tr, stops, start_time, file)
+	file.close()
+
+def generate_L1A_SD_T():
+	dt = [0, 3, 2, 2, 1, 3, 1, 1, 4, 2]
+	tr = [0]
+	stops = ["ACH", "CATEDRALA", "SPITAL", "ACR", "ROMTELECOM", "VALCEA", "METALURGIC", "STEAUA", "PIRELLI", "TMK"]
+
+	file = open("l1a_sd_t.csv", "w")
+	start_time = time(5, 50)
+	write_line(dt, tr, stops, start_time, file)
+	file.close()
 
 #    TEMPLATE
 #def generate_Lx_WW_Y():	
@@ -70,6 +120,12 @@ def generate_L1_LV_R():
 def main():
 	generate_L1_LV_T()
 	generate_L1_LV_R()
+	generate_L1_SD_T()
+	generate_L1_SD_R()
+
+	generate_L1A_LV_T()
+	generate_L1A_LV_R()
+	generate_L1A_SD_T()
 	
 if __name__ == "__main__":
     main()
