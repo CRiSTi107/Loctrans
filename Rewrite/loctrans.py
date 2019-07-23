@@ -106,6 +106,46 @@ def generate_L1A_SD_T():
 	write_line(dt, tr, stops, start_time, file)
 	file.close()
 
+def generate_L1B_LV_T():
+	dt = [0, 3, 3, 1, 1, 2, 1, 1, 1, 2, 2, 2, 2, 1, 3, 3]
+	tr = [0, 480, 480]
+	stops = ["ACH", "CATEDRALA", "SPITAL", "ACR", "ROMTELECOM", "UNION", "MINULESCU", "ARCULUI", "FINANTE", "VALCEA", "METALURGIC", "TUNARI", "ARTILERIEI", "CAO", "PRYSMIAN1", "PRYSMIAN2"]
+	
+	file = open("l1b_lv_t.csv", "w")
+	start_time = time(6)
+	write_line(dt, tr, stops, start_time, file)
+	file.close()
+	
+def generate_L1B_LV_R():
+	dt = [0, 3, 3, 2, 1, 3, 2, 2, 2, 2, 1, 2, 2, 6, 3]
+	tr = [0, 480, 480]
+	stops = ["PRYSMIAN2", "PRYSMIAN1", "LIDL", "GARA", "TUNARI", "METALURGIC", "FABRA", "LPS", "HELIOS", "ACR", "ROMTELECOM", "FINANTE", "13 DECEMBRIE", "CATEDRALA", "ACH"]
+	
+	file = open("l1b_lv_r.csv", "w")
+	start_time = time(7, 20)
+	write_line(dt, tr, stops, start_time, file)
+	file.close()
+
+def generate_L1B_SD_T():
+	dt = [0, 3, 3, 1, 1, 2, 2, 1, 1, 2, 1, 2, 1, 2, 3, 5]
+	tr = [0, 730, 240]
+	stops = ["ACH", "CATEDRALA", "SPITAL", "ACR", "ROMTELECOM", "UNION", "MINULESCU", "ARCULUI", "FINANTE", "VALCEA", "METALURGIC", "TUNARI", "ARTILERIEI", "CAO", "PRYSMIAN1", "PRYSMIAN2"]
+	
+	file = open("l1b_sd_t.csv", "w")
+	start_time = time(5, 50)
+	write_line(dt, tr, stops, start_time, file)
+	file.close()
+	
+def generate_L1B_SD_R():
+	dt = [0, 5, 2, 2, 2, 2, 2, 2, 2, 2, 1, 1, 3, 2, 3]
+	tr = [0, 720, 240]
+	stops = ["PRYSMIAN2", "PRYSMIAN1", "LIDL", "GARA", "TUNARI", "METALURGIC", "FABRA", "LPS", "HELIOS", "ACR", "ROMTELECOM", "FINANTE", "13 DECEMBRIE", "CATEDRALA", "ACH"]
+	
+	file = open("l1b_sd_r.csv", "w")
+	start_time = time(7, 20)
+	write_line(dt, tr, stops, start_time, file)
+	file.close()
+
 #    TEMPLATE
 #def generate_Lx_WW_Y():	
 #	dt = []
@@ -126,6 +166,11 @@ def main():
 	generate_L1A_LV_T()
 	generate_L1A_LV_R()
 	generate_L1A_SD_T()
+	
+	generate_L1B_LV_T()
+	generate_L1B_LV_R()
+	generate_L1B_SD_T()
+	generate_L1B_SD_R()
 	
 if __name__ == "__main__":
     main()
