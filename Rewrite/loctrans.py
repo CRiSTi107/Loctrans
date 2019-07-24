@@ -146,6 +146,126 @@ def generate_L1B_SD_R():
 	write_line(dt, tr, stops, start_time, file)
 	file.close()
 
+def generate_L1C_LV_T():
+	dt = [0, 3, 3, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 1, 1, 7]
+	tr = [0, 65, 415, 115, 355]
+	stops = ["ACH", "CATEDRALA", "SPITAL", "ACR", "ROMTELECOM", "UNION", "MINULESCU", "ARCULUI", "FINANTE", "VALCEA", "METALURGIC", "TUNARI", "ARTILERIEI", "CAO", "PIRELLI", "TMK"]
+	
+	file = open("l1c_lv_t.csv", "w")
+	start_time = time(5, 55)
+	write_line(dt, tr, stops, start_time, file)
+	file.close()
+	
+def generate_L1C_LV_R():
+	dt = [0, 2, 3, 3, 4, 2, 2, 2, 2, 1, 1, 3, 2, 2]
+	tr = [0, 60, 475, 55, 425]
+	stops = ["TMK", "PIRELLI", "LIDL", "GARA", "METALURGIC", "VALCEA", "LPS", "HELIOS", "ACR", "ROMTELECOM", "FINANTE", "13 DECEMBRIE", "CATEDRALA", "ACH"]
+	
+	file = open("l1c_lv_r.csv", "w")
+	start_time = time(6, 25)
+	write_line(dt, tr, stops, start_time, file)
+	file.close()
+	
+def generate_L1C_SD_T():
+	dt = [0, 3, 3, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 1, 1, 2]
+	tr = [0, 480, 470]
+	stops = ["ACH", "CATEDRALA", "SPITAL", "ACR", "ROMTELECOM", "UNION", "MINULESCU", "ARCULUI", "FINANTE", "VALCEA", "METALURGIC", "TUNARI", "ARTILERIEI", "CAO", "PIRELLI", "TMK"]
+	
+	file = open("l1c_sd_t.csv", "w")
+	start_time = time(5, 55)
+	write_line(dt, tr, stops, start_time, file)
+	file.close()
+	
+def generate_L1C_SD_R():
+	dt = [0, 2, 3, 3, 4, 2, 2, 2, 2, 1, 1, 3, 2, 2]
+	tr = [0, 535, 480]
+	stops = ["TMK", "PIRELLI", "LIDL", "GARA", "METALURGIC", "VALCEA", "LPS", "HELIOS", "ACR", "ROMTELECOM", "FINANTE", "13 DECEMBRIE", "CATEDRALA", "ACH"]
+	
+	file = open("l1c_sd_r.csv", "w")
+	start_time = time(6, 25)
+	write_line(dt, tr, stops, start_time, file)
+	file.close()
+
+def generate_L2_LV_T():
+	dt = [0, 1, 2, 1, 1, 2, 2, 2, 2, 3]
+	tr = [0, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 60, 25, 25, 25, 25, 25, 25, 25, 15, 35, 15, 50, 50, 50, 50, 50, 50]
+	stops = ["GARA", "ARTILERIEI", "CAO", "STEAUA", "METALURGIC", "VALCEA", "LPS", "HELIOS", "PARC HOTEL", "CATEDRALA"]
+	
+	file = open("l2_lv_t.csv", "w")
+	start_time = time(5, 30)
+	write_line(dt, tr, stops, start_time, file)
+	file.close()
+	
+def generate_L2_LV_R():
+	dt = [0, 3, 1, 1, 2, 1, 1, 2, 2]
+	tr = [0, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 60, 25, 25, 25, 25, 25, 50, 15, 35, 15, 50, 50, 50, 50, 50, 50]
+	stops = ["CATEDRALA", "SPITAL", "ACR", "ROMTELECOM", "VALCEA", "METALURGIC", "STEAUA", "KAUFLAND", "GARA"]
+	
+	file = open("l2_lv_r.csv", "w")
+	start_time = time(5, 55)
+	write_line(dt, tr, stops, start_time, file)
+	file.close()
+	
+def generate_L2_SD_T():
+	dt = [0, 1, 2, 1, 1, 2, 2, 2, 2, 3]
+	tr = [0, 100, 50, 50, 50, 85, 50, 50, 50, 90, 50, 50, 50, 50, 50, 50]
+	stops = ["GARA", "ARTILERIEI", "CAO", "STEAUA", "METALURGIC", "VALCEA", "LPS", "HELIOS", "PARC HOTEL", "CATEDRALA"]
+	
+	file = open("l2_sd_t.csv", "w")
+	start_time = time(5, 30)
+	write_line(dt, tr, stops, start_time, file)
+	file.close()
+
+def generate_L2_SD_R():
+	dt = [0, 3, 1, 1, 2, 1, 1, 2, 2]
+	tr = [0, 100, 50, 50, 50, 85, 50, 50, 50, 90, 50, 50, 50, 50, 50, 50]
+	stops = ["CATEDRALA", "SPITAL", "ACR", "ROMTELECOM", "VALCEA", "METALURGIC", "STEAUA", "KAUFLAND", "GARA"]
+	
+	file = open("l2_sd_r.csv", "w")
+	start_time = time(5, 55)
+	write_line(dt, tr, stops, start_time, file)
+	file.close()
+
+def generate_L3_LV_T():
+	dt = [0, 2, 3, 10]
+	tr = [0, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 50, 30, 30, 40, 30, 30, 40, 30, 30, 30, 30, 30, 35, 40, 30]
+	stops = ["LPS", "OMV", "AXXA", "EROILOR"]
+	
+	file = open("l3_lv_t.csv", "w")
+	start_time = time(5, 50)
+	write_line(dt, tr, stops, start_time, file)
+	file.close()
+	
+def generate_L3_LV_R():
+	dt = [0, 5, 1, 2, 2, 2, 3]
+	tr = [0, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 50, 30, 30, 40, 30, 30, 40, 30, 30, 30, 30, 30, 35, 40, 30]
+	stops = ["EROILOR", "DECORA", "TMUCB", "GARA", "TUNARI", "FABRA", "LPS"]
+	
+	file = open("l3_lv_r.csv", "w")
+	start_time = time(6, 5)
+	write_line(dt, tr, stops, start_time, file)
+	file.close()
+
+def generate_L3_SD_T():
+	dt = [0, 2, 4, 9]
+	tr = [0, 80, 80, 80]
+	stops = ["LPS", "OMV", "AXXA", "EROILOR"]
+	
+	file = open("l3_sd_t.csv", "w")
+	start_time = time(7, 35)
+	write_line(dt, tr, stops, start_time, file)
+	file.close()
+	
+def generate_L3_SD_R():
+	dt = [0, 6, 2, 2, 2, 2, 1]
+	tr = [0, 80, 80, 80]
+	stops = ["EROILOR", "DECORA", "TMUCB", "GARA", "TUNARI", "FABRA", "LPS"]
+	
+	file = open("l3_sd_r.csv", "w")
+	start_time = time(7, 50)
+	write_line(dt, tr, stops, start_time, file)
+	file.close()
+
 #    TEMPLATE
 #def generate_Lx_WW_Y():	
 #	dt = []
@@ -171,6 +291,21 @@ def main():
 	generate_L1B_LV_R()
 	generate_L1B_SD_T()
 	generate_L1B_SD_R()
+	
+	generate_L1C_LV_T()
+	generate_L1C_LV_R()
+	generate_L1C_SD_T()
+	generate_L1C_SD_R()
+	
+	generate_L2_LV_T()
+	generate_L2_LV_R()
+	generate_L2_SD_T()
+	generate_L2_SD_R()
+	
+	generate_L3_LV_T()
+	generate_L3_LV_R()
+	generate_L3_SD_T()
+	generate_L3_SD_R()
 	
 if __name__ == "__main__":
     main()

@@ -1,0 +1,5 @@
+1. Fill in L4, L5, L5B
+2. Check and fix if necessary generated data for lines (dorby slave?)
+3. Make app
+4. ???
+5. Profit
