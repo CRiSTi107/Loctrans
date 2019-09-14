@@ -266,6 +266,114 @@ def generate_L3_SD_R():
 	write_line(dt, tr, stops, start_time, file)
 	file.close()
 
+def generate_L4_LV_T():
+	dt = [0, 3, 2, 1, 2, 2, 2, 4, 2, 1, 6]
+	tr = [0, 45, 50, 50, 50, 50, 50, 75, 60, 50, 25, 100, 65, 90, 60, 50, 95]
+	stops = ["CATEDRALA", "SPITAL", "ACR", "ROMTELECOM", "FINANTE", "TRIBUNAL", "LPS", "OMV", "ALTUR", "ALRO", "SATU NOU"]
+	
+	file = open("l4_lv_t.csv", "w")
+	start_time = time(5, 50)
+	write_line(dt, tr, stops, start_time, file)
+	file.close()
+	
+def generate_L4_LV_R():
+	dt = [0, 6, 2, 1, 2, 2, 2, 1, 1, 2, 2]
+	tr = [0, 45, 50, 50, 50, 50, 50, 75, 60, 50, 65, 65, 60, 90, 60, 50, 95]
+	stops = ["SATU NOU", "ALRO", "ALTUR", "DECORA", "BAZIN", "HELIOS", "ACR", "ROMTELECOM", "UNION", "13 DECEMBRIE", "CATEDRALA"]
+	
+	file = open("l4_lv_r.csv", "w")
+	start_time = time(6, 15)
+	write_line(dt, tr, stops, start_time, file)
+	file.close()
+	
+def generate_L4_SD_T():
+	dt = [0, 3, 2, 1, 2, 2, 2, 2, 4, 6]
+	tr = [0, 295, 185, 45]
+	stops = ["CATEDRALA", "SPITAL", "ACR", "ROMTELECOM", "FINANTE", "TRIBUNAL", "LPS", "OMV", "ALRO", "SATU NOU"]
+	
+	file = open("l4_sd_t.csv", "w")
+	start_time = time(8, 5)
+	write_line(dt, tr, stops, start_time, file)
+	file.close()
+	
+def generate_L4_SD_R():
+	dt = [0, 6, 2, 1, 2, 2, 2, 1, 1, 2, 2]
+	tr = [0, 295, 180, 50]
+	stops = ["SATU NOU", "ALRO", "ALTUR", "DECORA", "BAZIN", "HELIOS", "ACR", "ROMTELECOM", "UNION", "13 DECEMBRIE", "CATEDRALA"]
+	
+	file = open("l4_sd_r.csv", "w")
+	start_time = time(8, 30)
+	write_line(dt, tr, stops, start_time, file)
+	file.close()
+	
+def generate_L5_LV_T():
+	dt = [0, 4, 2, 4, 3, 2, 2]
+	tr = [0, 55, 55, 55, 85, 55, 55, 55, 55, 55, 55, 55, 55, 55, 85, 65]
+	stops = ["CLOCOCIOV", "BANULUI", "CUZA VODA", "LIDL", "GARA", "TUNARI", "VALCEA"]
+	
+	file = open("l5_lv_t.csv", "w")
+	start_time = time(6)
+	write_line(dt, tr, stops, start_time, file)
+	file.close()
+	
+def generate_L5_LV_R():
+	dt = [0, 3, 3, 3, 2, 3, 4, 10]
+	tr = [0, 55, 55, 55, 85, 55, 54, 56, 55, 55, 55, 55, 55, 55, 85, 65]
+	stops = ["VALCEA", "LPS", "HELIOS", "ACR", "ROMTELECOM", "FINANTE", "MINULESCU", "CLOCOCIOV"]
+	
+	file = open("l5_lv_r.csv", "w")
+	start_time = time(6, 17)
+	write_line(dt, tr, stops, start_time, file)
+	file.close()
+	
+def generate_L5_SD_T():
+	dt = [0, 4, 2, 4, 3, 2, 2]
+	tr = [0, 55, 55, 200, 55, 175]
+	stops = ["CLOCOCIOV", "BANULUI", "CUZA VODA", "LIDL", "GARA", "TUNARI", "VALCEA"]
+	
+	file = open("l5_sd_t.csv", "w")
+	start_time = time(7, 40)
+	write_line(dt, tr, stops, start_time, file)
+	file.close()
+	
+def generate_L5_SD_R():
+	dt = [0, 3, 3, 3, 2, 3, 4, 10]
+	tr = [0, 55, 55, 200, 55, 175]
+	stops = ["VALCEA", "LPS", "HELIOS", "ACR", "ROMTELECOM", "FINANTE", "MINULESCU", "CLOCOCIOV"]
+	
+	file = open("l5_sd_r.csv", "w")
+	start_time = time(7, 57)
+	write_line(dt, tr, stops, start_time, file)
+	file.close()
+	
+def generate_L5B_LV_T():
+	dt = [0, 6, 1, 1, 1, 1, 1, 2, 2]
+	tr = [0, 40, 30, 410, 40]
+	stops = ["CLOCOCIOV", "STEAUA", "METALURGIC", "TUNARI", "AUTOGARA", "TMUCB", "DEDEMAN", "ALTUR", "ALRO"]
+	
+	file = open("l5b_lv_t.csv", "w")
+	start_time = time(6)
+	write_line(dt, tr, stops, start_time, file)
+	file.close()
+	
+def generate_L5B_LV_R():
+	dt = [0, 6, 1, 1, 1, 1, 1, 2, 2]
+	tr = [0, 40, 35, 405, 75]
+	stops = ["ALRO", "ALTUR", "DEDEMAN", "TMUCB", "GARA", "TUNARI", "METALURGIC", "STEAUA", "CLOCOCIOV"]
+	
+	file = open("l5b_lv_r.csv", "w")
+	start_time = time(6, 15)
+	write_line(dt, tr, stops, start_time, file)
+	file.close()
+	
+def generate_L5B_SD_T():
+	file = open("l5b_sd_t.csv", "w")
+	file.close()
+	
+def generate_L5B_SD_R():
+	file = open("l5b_sd_r.csv", "w")
+	file.close()
+
 #    TEMPLATE
 #def generate_Lx_WW_Y():	
 #	dt = []
@@ -306,6 +414,21 @@ def main():
 	generate_L3_LV_R()
 	generate_L3_SD_T()
 	generate_L3_SD_R()
+	
+	generate_L4_LV_T()
+	generate_L4_LV_R()
+	generate_L4_SD_T()
+	generate_L4_SD_R()
+	
+	generate_L5_LV_T()
+	generate_L5_LV_R()
+	generate_L5_SD_T()
+	generate_L5_SD_R()
+	
+	generate_L5B_LV_T()
+	generate_L5B_LV_R()
+	generate_L5B_SD_T()
+	generate_L5B_SD_R()
 	
 if __name__ == "__main__":
     main()
